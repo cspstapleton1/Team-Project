@@ -6,6 +6,8 @@ int guessCount = 0;
 int guessLimit = 3;
 boolean outOfGuesses = false;
 
+
+
 while(!guess.equals(secretWord) && !outOfGuesses){
      if(guessCount < guessLimit){
           System.out.print("Enter a guess: ");
