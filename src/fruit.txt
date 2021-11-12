@@ -5,3 +5,5 @@ Grape
 Peach
 Plum
 Pear
+Pomegranate
+Watermelon

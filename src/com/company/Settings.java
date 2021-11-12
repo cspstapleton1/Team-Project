@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ReadAndWrite {
+public class Settings {
 
     public String pickAWord(String a, String b) {
         Random rNum = new Random();
         int lineNum = 0, randomPick = 0, currentLine = 0;
-        String thePick = "";
+        String thePick = "", temp = "";
         ArrayList<String> difOption = new ArrayList<>();
 
         File gameFile = new File("C:\\GenSpark\\TeamProject\\GitFork\\Team-Project\\src\\" + a + ".txt");
@@ -18,26 +18,27 @@ public class ReadAndWrite {
         try {
             Scanner myReader = new Scanner(gameFile);
             while (myReader.hasNextLine()){
+                temp = myReader.nextLine();
                 if(b.equals("easy")){
-                    if(myReader.nextLine().length() < 5){
-                        difOption.add(myReader.nextLine());
+                    if(temp.length() < 5){
+                        difOption.add(temp);
                     }
                 }
                 else if(b.equals("normal")){
-                    if(myReader.nextLine().length() < 7 && myReader.nextLine().length() > 4){
-                        difOption.add(myReader.nextLine());
+                    if(temp.length() < 7 && temp.length() > 4){
+                        difOption.add(temp);
                     }
                 }
                 else if(b.equals("hard")){
-                    if(myReader.nextLine().length() > 6){
-                        difOption.add(myReader.nextLine());
+                    if(temp.length() > 6){
+                        difOption.add(temp);
                     }
                 }
 
-                myReader.nextLine();
+                //myReader.nextLine();
             }
-        }catch (Exception e){
-            System.out.println("Read error");
+        }catch (Exception d){
+            System.out.println("Read error 1");
         }
 
         randomPick = rNum.nextInt(difOption.size());
@@ -63,9 +64,11 @@ public class ReadAndWrite {
 
     }
 
-    public ArrayList<String> wordList(String a){
+    public ArrayList<String> wordList(String a, String b){
 
         ArrayList<String> words = new ArrayList<>();
+        String temp = "";
+        //ArrayList<String> difOption = new ArrayList<>();
 
 
         File gameFile = new File("C:\\GenSpark\\TeamProject\\GitFork\\Team-Project\\src\\" + a + ".txt");
@@ -73,14 +76,28 @@ public class ReadAndWrite {
         try {
             Scanner myReader = new Scanner(gameFile);
             while (myReader.hasNextLine()){
-                words.add(myReader.nextLine());
+                temp = myReader.nextLine();
+                if(b.equals("easy")){
+                    if(temp.length() < 5){
+                        words.add(temp);
+                    }
+                }
+                else if(b.equals("normal")){
+                    if(temp.length() < 7 && temp.length() > 4){
+                        words.add(temp);
+                    }
+                }
+                else if(b.equals("hard")){
+                    if(temp.length() > 6){
+                        words.add(temp);
+                    }
+                }
+
                 //myReader.nextLine();
             }
         }catch (Exception e){
-            System.out.println("Read error");
+            System.out.println("Read error 2");
         }
-
-
 
         return words;
 
