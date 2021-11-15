@@ -7,3 +7,14 @@ Plum
 Pear
 Pomegranate
 Watermelon
+Cherry
+Mango
+Strawberry
+Lime
+Lemon
+Kiwi
+Date
+Melon
+Mango
+Pineapple
+Tangerine

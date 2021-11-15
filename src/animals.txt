@@ -1,0 +1,17 @@
+Cat
+Dog
+Cow
+Giraffe
+Elephant
+Squirrel
+Parrot
+Alligator
+Snake
+Spider
+Bull
+Wolf
+Chameleon
+Frog
+Skunk
+Human
+Monkey

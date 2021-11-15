@@ -1,7 +1,9 @@
 package com.company;
 
+import javax.swing.*;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ public class Score {
             multiplier = 3;
         }
 
-        scoreTotal = multiplier * 1500 - guesses * 100;
+        scoreTotal = multiplier * 1500 - (guesses - 1) * (100 * multiplier);
 
         return scoreTotal;
     }
@@ -31,9 +33,9 @@ public class Score {
     public void record(String name, int playerScore){
 
         File scoreFile = new File("C:\\GenSpark\\TeamProject\\GitFork\\Team-Project\\src\\score.txt");
-        boolean nan = false;
-        String temporary = "";
-        int score = 0;
+        //boolean nan = false;
+        //String temporary = "";
+        //int score = 0;
 
         try{
             Scanner writeScore = new Scanner(scoreFile);
@@ -41,15 +43,45 @@ public class Score {
             BufferedWriter bw = new BufferedWriter(fw);
             bw.newLine();
             bw.write(name + " " + playerScore);
-            System.out.println("This is a test");
-
+            bw.close();
+            fw.close();
 
         }catch (Exception scoreWrite){
             System.out.println("There was a problem writing the score.");
         }
-
-        //return scoreFile;
     }
+
+    public void HighScore(int totalscore){
+
+        JFrame frame = new JFrame("JoptionPane Test");
+        int currentHighScore = 0;
+        File scoreFile = new File("C:\\GenSpark\\TeamProject\\GitFork\\Team-Project\\src\\score.txt");
+
+        try{
+            Scanner readScore = new Scanner(scoreFile);
+            while(readScore.hasNext()){
+                try{
+                    if (currentHighScore < readScore.nextInt())
+                    {currentHighScore = readScore.nextInt();}
+                    System.out.println(currentHighScore);
+                    readScore.nextInt();
+                } catch (Exception notString){
+                    readScore.next();
+                }
+
+            }
+
+        }catch (Exception z){
+            System.out.println("Not a file!");
+        }
+
+        if(currentHighScore < totalscore){
+            //System.out.println("New highscore!");
+            JOptionPane.showMessageDialog(frame, "New highscore!");
+        }
+
+    }
+
     public ArrayList<String> scoreBoard(){
 
         File scoreFile = new File("C:\\GenSpark\\TeamProject\\GitFork\\Team-Project\\src\\score.txt");
